@@ -1,0 +1,94 @@
+[
+    {
+        "environment": [
+            { "name": "PORT", "value": "${eric_port}" },
+            { "name": "ACCOUNT_API_URL", "value": "https://${account_subdomain_prefix}${external_top_level_domain}" },
+            { "name": "DEVELOPER_HUB_URL", "value": "https://developer${external_top_level_domain}" },
+            { "name": "CACHE_URL", "value": "${eric_cache_url}" },
+            { "name": "CACHE_MAX_CONNECTIONS", "value": "${eric_cache_max_connections}" },
+            { "name": "CACHE_MAX_IDLE", "value": "${eric_cache_max_idle}" },
+            { "name": "CACHE_IDLE_TIMEOUT", "value": "${eric_cache_idle_timeout}" },
+            { "name": "CACHE_TTL", "value": "${eric_cache_ttl}" },
+            { "name": "FLUSH_INTERVAL", "value": "${eric_flush_interval}" },
+            { "name": "GRACEFUL_SHUTDOWN_PERIOD", "value": "${eric_graceful_shutdown_period}" },
+            { "name": "DEFAULT_RATE_LIMIT", "value": "${eric_default_rate_limit}" },
+            { "name": "DEFAULT_RATE_WINDOW", "value": "${eric_default_rate_limit_window}" },
+            { "name": "PROXY_TARGET_URLS", "value": "http://${service_name}:${bankrupt_officer_search_web_proxy_port}" },
+            { "name": "MODE", "value": "web" },
+            { "name": "LOGLEVEL", "value": "${log_level}" }
+        ],
+        "name": "eric",
+        "image": "${docker_registry}/eric:${eric_version}",
+        "cpu": 1,
+        "memory": 512,
+        "portMappings": [{
+            "containerPort": ${eric_port},
+            "hostPort": 0,
+            "protocol": "tcp"
+        }],
+       "links": [
+         "${service_name}"
+       ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-create-group": "true",
+                "awslogs-region": "${aws_region}",
+                "awslogs-group": "/ecs/${name_prefix}/eric",
+                "awslogs-stream-prefix": "ecs"
+            }
+        },
+        "secrets": [
+            { "name": "API_KEY", "valueFrom": "${eric-api-key}" },
+            { "name": "AES256_KEY", "valueFrom": "${eric-aes256-key}" }
+        ],
+        "essential": true
+    },
+    {
+        "environment": [
+            { "name": "PORT", "value": "${bankrupt_officer_search_web_proxy_port}" },
+            { "name": "LOGLEVEL", "value": "${log_level}" },
+            { "name": "OAUTH2_AUTH_URI", "value": "https://${account_subdomain_prefix}${external_top_level_domain}/oauth2/authorise" },
+            { "name": "OAUTH2_REDIRECT_URI", "value": "${bankrupt_officer_search_web_oauth2_redirect_uri}" },
+            { "name": "OAUTH2_TOKEN_URI", "value": "${bankrupt_officer_search_web_oauth2_token_uri}" },
+            { "name": "CDN_HOST", "value": "${bankrupt_officer_search_web_cdn_host}" },
+            { "name": "CHS_URL", "value": "${bankrupt_officer_search_web_chs_url}" },
+            { "name": "ACCOUNT_URL", "value": "${bankrupt_officer_search_web_account_url}" },
+            { "name": "CHS_MONITOR_GUI_URL", "value": "${bankrupt_officer_search_web_monitor_url}" },
+            { "name": "COOKIE_DOMAIN", "value": "${cookie_domain}" },
+            { "name": "COOKIE_NAME", "value": "${cookie_name}" },
+            { "name": "CACHE_POOL_SIZE", "value": "${bankrupt_officer_search_web_cache_pool_size}" },
+            { "name": "CACHE_SERVER", "value": "${bankrupt_officer_search_web_cache_server}" },
+            { "name": "DEFAULT_SESSION_EXPIRATION", "value": "${bankrupt_officer_search_web_default_session_expiration}" },
+            { "name": "INTERNAL_API_URL", "value": "${internal_api_url}" },
+            { "name": "API_URL", "value": "${api_url}" }
+        ],
+        "name": "${service_name}",
+        "image": "${docker_registry}/${service_name}:${bankrupt_officer_search_web_release_version}",
+        "cpu": 1,
+        "memory": 512,
+        "mountPoints": [],
+        "portMappings": [{
+            "containerPort": ${bankrupt_officer_search_web_proxy_port},
+            "hostPort": 0,
+            "protocol": "tcp"
+        }],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+                "awslogs-create-group": "true",
+                "awslogs-region": "${aws_region}",
+                "awslogs-group": "/ecs/${name_prefix}/${service_name}",
+                "awslogs-stream-prefix": "ecs"
+            }
+        },
+        "secrets": [
+            { "name": "OAUTH2_CLIENT_ID", "valueFrom": "${web-oauth2-client-id}" },
+            { "name": "OAUTH2_CLIENT_SECRET", "valueFrom": "${web-oauth2-client-secret}" },
+            { "name": "OAUTH2_REQUEST_KEY", "valueFrom": "${web-oauth2-request-key}" },
+            { "name": "COOKIE_SECRET", "valueFrom": "${web-oauth2-cookie-secret}" }
+        ],
+        "volumesFrom": [],
+        "essential": true
+    }
+]

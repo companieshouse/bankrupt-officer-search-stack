@@ -1,0 +1,38 @@
+aws_bucket = "development-eu-west-2.terraform-state.ch.gov.uk"
+remote_state_bucket = "ch-development-terraform-state-london"
+environment = "cidev"
+deploy_to = "development"
+state_prefix = "env:/development"
+aws_profile = "development-eu-west-2"
+
+cookie_domain = "cidev.aws.chdev.org"
+cookie_name = "__SID"
+
+# Certificate for https access through ALB
+ssl_certificate_id = "arn:aws:acm:eu-west-2:169942020521:certificate/8d7db053-7416-4e56-946b-762d0a34c899"
+zone_id = "Z2KSI4Z5ZN9NT0"
+external_top_level_domain = ".cidev.aws.chdev.org"
+internal_top_level_domain = "-cidev.development.aws.internal"
+
+ec2_key_pair_name = "chs-cidev"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "cidev-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:6379"
+
+# api configs
+internal_api_url = "https://internalapi.cidev.aws.chdev.org"
+api_url = "https://api.cidev.aws.chdev.org"
+
+# shared bankrupt officer search web configs
+bankrupt_officer_search_web_oauth2_redirect_uri = "https://cidev.aws.chdev.org/oauth2/user/callback"
+bankrupt_officer_search_web_oauth2_token_uri = "https://account.cidev.aws.chdev.org/oauth2/token"
+bankrupt_officer_search_web_cdn_host = "d3uvya5a8a1ncx.cloudfront.net"
+bankrupt_officer_search_web_chs_url = "https://cidev.aws.chdev.org"
+bankrupt_officer_search_web_account_url = "https://account.cidev.aws.chdev.org"
+bankrupt_officer_search_web_monitor_url = "https://follow.cidev.aws.chdev.org"
+bankrupt_officer_search_web_cache_pool_size = 8
+bankrupt_officer_search_web_cache_server = "cidev-chs-elasticache.9vgugg.ng.0001.euw2.cache.amazonaws.com:6379"
+bankrupt_officer_search_web_default_session_expiration = 3600
