@@ -123,9 +123,9 @@ variable "vault_password" {
 }
 
 # Networking
-variable "admin_lb_internal" {
+variable "bankrupt_officer_search_web_lb_internal" {
   type        = bool
-  description = "Whether the Payments Admin Web ALB should be internal or public facing"
+  description = "Whether the Bankrupt Officer Search ALB should be internal or public facing"
   default     = true
 }
 
@@ -136,7 +136,7 @@ variable "admin_lb_internal" {
 # eric
 variable "eric_version" {
   type        = string
-  description = "The version of the eric service/container to run as a reverse proxy in front of pay_admin service."
+  description = "The version of the eric service/container to run as a reverse proxy in front of bankrupt_officer_search_web service."
 }
 variable "eric_cache_url" {
   type = string
@@ -174,11 +174,11 @@ variable "eric_default_rate_limit_window" {
   default = "5m"
 }
 
-# payments-admin-web
+# bankrupt-officer-search-web
 
 variable "bankrupt_officer_search_web_release_version" {
   type        = string
-  description = "The release version for the payments-admin-web service."
+  description = "The release version for the bankrupt-officer-search-web service."
 }
 variable "bankrupt_officer_search_web_oauth2_redirect_uri" {
   type = string
