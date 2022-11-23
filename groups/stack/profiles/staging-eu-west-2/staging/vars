@@ -1,0 +1,40 @@
+aws_bucket = "staging-eu-west-2.terraform-state.ch.gov.uk"
+remote_state_bucket = "ch-service-staging-terraform-state"
+environment = "staging"
+deploy_to = "staging"
+state_prefix = "env:/staging"
+aws_profile = "staging-eu-west-2"
+
+cookie_domain = "company-information.service.gov.uk"
+cookie_name = "__SID"
+
+# Certificate for https access through ALB
+ssl_certificate_id = "arn:aws:acm:eu-west-2:250991044064:certificate/56b76dab-5728-4f83-a16d-e3dd59cd82c8"
+external_top_level_domain = "-staging.company-information.service.gov.uk"
+internal_top_level_domain = ".staging.aws.internal"
+
+ec2_key_pair_name = "ch-aws-staging"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "staging-chs-elasticache.3psdof.ng.0001.euw2.cache.amazonaws.com:6379"
+
+# api configs
+internal_api_url = "https://internal-api-staging.company-information.service.gov.uk"
+api_url = "https://api-staging.company-information.service.gov.uk"
+
+# accounts prefix
+account_subdomain_prefix = "identity"
+
+# shared bankrupt officer search web configs
+bankrupt_officer_search_web_oauth2_redirect_uri = "https://staging.company-information.service.gov.uk/oauth2/user/callback"
+bankrupt_officer_search_web_oauth2_token_uri = "https://identity-staging.company-information.service.gov.uk/oauth2/token"
+bankrupt_officer_search_web_cdn_host = "d30x4yr4zvd64e.cloudfront.net"
+bankrupt_officer_search_web_chs_url = "https://staging.company-information.service.gov.uk"
+bankrupt_officer_search_web_account_url = "https://identity-staging.company-information.service.gov.uk"
+bankrupt_officer_search_web_monitor_url = "https://follow-staging.company-information.service.gov.uk"
+bankrupt_officer_search_web_cache_pool_size = 8
+bankrupt_officer_search_web_cache_server = "staging-chs-elasticache.3psdof.ng.0001.euw2.cache.amazonaws.com:6379"
+bankrupt_officer_search_web_default_session_expiration = 3600

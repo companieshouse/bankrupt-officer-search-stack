@@ -1,0 +1,40 @@
+aws_bucket = "live-eu-west-2.terraform-state.ch.gov.uk"
+remote_state_bucket = "ch-service-live-terraform-state"
+environment = "live"
+deploy_to = "live"
+state_prefix = "env:/live"
+aws_profile = "live-eu-west-2"
+
+cookie_domain = "company-information.service.gov.uk"
+cookie_name = "__SID"
+
+# Certificate for https access through ALB
+ssl_certificate_id = "arn:aws:acm:eu-west-2:449229032822:certificate/5c57a264-3168-4de8-8767-40fd0cedebf0"
+external_top_level_domain = ".company-information.service.gov.uk"
+internal_top_level_domain = ".live.aws.internal"
+
+ec2_key_pair_name = "ch-aws-live"
+
+# shared configs
+log_level = "TRACE"
+
+# eric configs
+eric_cache_url = "live-chs-elasticache.yaky4x.ng.0001.euw2.cache.amazonaws.com:6379"
+
+# api configs
+internal_api_url = "https://internal-api.company-information.service.gov.uk"
+api_url = "https://api.company-information.service.gov.uk"
+
+# accounts prefix
+account_subdomain_prefix = "identity"
+
+# shared bankrupt officer search web configs
+bankrupt_officer_search_web_oauth2_redirect_uri = "https://find-and-update.company-information.service.gov.uk/oauth2/user/callback"
+bankrupt_officer_search_web_oauth2_token_uri = "https://identity.company-information.service.gov.uk/oauth2/token"
+bankrupt_officer_search_web_cdn_host = "d30x4yr4zvd64e.cloudfront.net"
+bankrupt_officer_search_web_chs_url = "https://find-and-update.company-information.service.gov.uk"
+bankrupt_officer_search_web_account_url = "https://identity.company-information.service.gov.uk"
+bankrupt_officer_search_web_monitor_url = "https://follow.company-information.service.gov.uk"
+bankrupt_officer_search_web_cache_pool_size = 8
+bankrupt_officer_search_web_cache_server = "live-chs-elasticache.yaky4x.ng.0001.euw2.cache.amazonaws.com:6379"
+bankrupt_officer_search_web_default_session_expiration = 3600
