@@ -180,10 +180,6 @@ variable "bankrupt_officer_search_web_release_version" {
   type        = string
   description = "The release version for the bankrupt-officer-search-web service."
 }
-variable "bankrupt_officer_search_api_url" {
-  type        = string
-  description = "The URL for the Bankrupt Officer Search API service."
-}
 variable "bankrupt_officer_search_web_oauth2_redirect_uri" {
   type = string
   description = "The uri to which to redirect after authorisation i.e. the CHS web url plus callback path \"/oauth2/user/callback\""

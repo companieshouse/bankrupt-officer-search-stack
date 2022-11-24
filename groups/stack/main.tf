@@ -179,7 +179,6 @@ module "ecs-services" {
   # bankrupt-officer-search-stack variables
   bankrupt_officer_search_web_release_version            = var.bankrupt_officer_search_web_release_version
   bankrupt_officer_search_web_application_port           = "10000"
-  bankrupt_officer_search_api_url                        = var.bankrupt_officer_search_api_url
   bankrupt_officer_search_web_oauth2_redirect_uri        = var.bankrupt_officer_search_web_oauth2_redirect_uri
   bankrupt_officer_search_web_oauth2_token_uri           = var.bankrupt_officer_search_web_oauth2_token_uri
   bankrupt_officer_search_web_cdn_host                   = var.bankrupt_officer_search_web_cdn_host
