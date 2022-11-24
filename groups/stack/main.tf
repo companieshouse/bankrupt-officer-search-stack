@@ -81,7 +81,7 @@ data "vault_generic_secret" "secrets" {
 
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
-  stack_name       = "bankrupt-officer-search-service"
+  stack_name       = "bankrupt-officer-search"
   stack_fullname   = "${local.stack_name}-stack"
   name_prefix      = "${local.stack_name}-${var.environment}"
 

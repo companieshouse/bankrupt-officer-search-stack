@@ -174,7 +174,7 @@ variable "eric_default_rate_limit_window" {
   default = "5m"
 }
 
-# bankrupt_officer_search_web-web
+# bankrupt_officer_search_web
 
 variable "bankrupt_officer_search_web_release_version" {
   type        = string
