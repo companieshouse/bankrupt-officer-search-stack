@@ -11,7 +11,7 @@ resource "aws_ecs_service" "bankrupt-officer-search-web-ecs-service" {
   depends_on      = [var.bankrupt-officer-search-web-lb-arn]
   load_balancer {
     target_group_arn = aws_lb_target_group.bankrupt-officer-search-web-target_group.arn
-    container_port   = var.bankrupt_officer_search_application_port
+    container_port   = var.bankrupt_officer_search_web_application_port
     container_name   = "eric" # [ALB -> target group -> eric -> bankrupt officer search web] so eric container named here
   }
 }
@@ -31,7 +31,7 @@ locals {
       cookie_name                : var.cookie_name
 
       # eric specific configs
-      eric_port                      : var.bankrupt_officer_search_application_port # eric needs to be the first service in the chain from ALB
+      eric_port                      : var.bankrupt_officer_search_web_application_port # eric needs to be the first service in the chain from ALB
       eric_version                   : var.eric_version
       eric_cache_url                 : var.eric_cache_url
       eric_cache_max_connections     : var.eric_cache_max_connections
@@ -48,7 +48,7 @@ locals {
       api_url                            : var.api_url
 
       # bankrupt_officer_search specific configs
-      bankrupt_officer_search_release_version                : var.bankrupt_officer_search_release_version
+      bankrupt_officer_search_web_release_version            : var.bankrupt_officer_search_web_release_version
       bankrupt_officer_search_proxy_port                     : local.bankrupt_officer_search_proxy_port
       bankrupt_officer_search_web_oauth2_redirect_uri        : var.bankrupt_officer_search_web_oauth2_redirect_uri
       bankrupt_officer_search_web_oauth2_token_uri           : var.bankrupt_officer_search_web_oauth2_token_uri
@@ -74,7 +74,7 @@ resource "aws_ecs_task_definition" "bankrupt-officer-search-web-task-definition"
 
 resource "aws_lb_target_group" "bankrupt-officer-search-web-target_group" {
   name     = "${var.environment}-${local.service_name}"
-  port     = var.bankrupt_officer_search_application_port
+  port     = var.bankrupt_officer_search_web_application_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
 }
