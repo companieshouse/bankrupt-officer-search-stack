@@ -188,7 +188,7 @@ variable "bankrupt_officer_search_web_oauth2_redirect_uri" {
   type = string
   description = "The uri to which to redirect after authorisation i.e. the CHS web url plus callback path \"/oauth2/user/callback\""
 }
-variable "bankrupt_officer-search_web_oauth2_token_uri" {
+variable "bankrupt_officer_search_web_oauth2_token_uri" {
   type = string
   description = "The uri of the oauth token refresh endpoint"
 }
