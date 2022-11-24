@@ -8,7 +8,7 @@ resource "aws_ecs_service" "bankrupt-officer-search-web-ecs-service" {
   cluster         = var.ecs_cluster_id
   task_definition = aws_ecs_task_definition.bankrupt-officer-search-web-task-definition.arn
   desired_count   = 1
-  depends_on      = [var.admin-web-lb-arn]
+  depends_on      = [var.bankrupt-officer-search-web-lb-arn]
   load_balancer {
     target_group_arn = aws_lb_target_group.bankrupt-officer-search-web-target_group.arn
     container_port   = var.bankrupt_officer_search_application_port
@@ -80,7 +80,7 @@ resource "aws_lb_target_group" "bankrupt-officer-search-web-target_group" {
 }
 
 resource "aws_lb_listener_rule" "bankrupt-officer-search-web" {
-  listener_arn = var.admin-web-lb-listener-arn
+  listener_arn = var.bankrupt-officer-search-web-lb-listener-arn
   priority     = 1
   action {
     type             = "forward"

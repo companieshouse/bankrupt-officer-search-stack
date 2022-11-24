@@ -86,11 +86,11 @@ locals {
   name_prefix      = "${local.stack_name}-${var.environment}"
 
   public_lb_cidrs  = ["0.0.0.0/0"]
-  lb_subnet_ids    = "${var.admin_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
-  lb_access_cidrs  = "${var.admin_lb_internal ?
+  lb_subnet_ids    = "${var.bankrupt_officer_search_web_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
+  lb_access_cidrs  = "${var.bankrupt_officer_search_web_lb_internal ?
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
                       local.public_lb_cidrs }"
-  app_access_cidrs = "${var.admin_lb_internal ?
+  app_access_cidrs = "${var.bankrupt_officer_search_web_lb_internal ?
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
 }
@@ -134,7 +134,7 @@ module "ecs-stack" {
   internal_top_level_domain  = var.internal_top_level_domain
   subnet_ids                 = local.lb_subnet_ids
   web_access_cidrs           = local.lb_access_cidrs
-  admin_lb_internal = var.admin_lb_internal
+  bankrupt_officer_search_web_lb_internal = var.bankrupt_officer_search_web_lb_internal
 }
 
 module "ecs-services" {
@@ -142,8 +142,8 @@ module "ecs-services" {
 
   name_prefix               = local.name_prefix
   environment               = var.environment
-  admin-web-lb-arn          = module.ecs-stack.admin-web-lb-listener-arn
-  admin-web-lb-listener-arn = module.ecs-stack.admin-web-lb-listener-arn
+  bankrupt-officer-search-web-lb-arn          = module.ecs-stack.bankrupt-officer-search-web-lb-listener-arn
+  bankrupt-officer-search-web-lb-listener-arn = module.ecs-stack.bankrupt-officer-search-web-lb-listener-arn
   vpc_id                    = local.vpc_id
   subnet_ids                = local.application_ids
   web_access_cidrs          = local.app_access_cidrs
