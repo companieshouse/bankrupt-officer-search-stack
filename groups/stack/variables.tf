@@ -123,7 +123,7 @@ variable "vault_password" {
 }
 
 # Networking
-variable "admin_lb_internal" {
+variable "bankrupt_officer_search_web_lb_internal" {
   type        = bool
   description = "Whether the Bankrupt Officer Search Web ALB should be internal or public facing"
   default     = true

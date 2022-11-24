@@ -13,11 +13,11 @@ variable "vpc_id" {
   type        = string
   description = "The ID of the VPC for the target group and security group."
 }
-variable "admin-web-lb-arn" {
+variable "bankrupt-officer-search-web-lb-arn" {
   type        = string
   description = "The ARN of the load balancer created in the ecs-stack module."
 }
-variable "admin-web-lb-listener-arn" {
+variable "bankrupt-officer-search-web-lb-listener-arn" {
   type        = string
   description = "The ARN of the lb listener created in the ecs-stack module."
 }
