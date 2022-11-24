@@ -81,16 +81,16 @@ data "vault_generic_secret" "secrets" {
 
 locals {
   # stack name is hardcoded here in main.tf for this stack. It should not be overridden per env
-  stack_name       = "bankrupt-officer-search-service"
+  stack_name       = "bankrupt-officer-search"
   stack_fullname   = "${local.stack_name}-stack"
   name_prefix      = "${local.stack_name}-${var.environment}"
 
   public_lb_cidrs  = ["0.0.0.0/0"]
-  lb_subnet_ids    = "${var.admin_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
-  lb_access_cidrs  = "${var.admin_lb_internal ?
+  lb_subnet_ids    = "${var.bankrupt_officer_search_web_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
+  lb_access_cidrs  = "${var.bankrupt_officer_search_web_lb_internal?
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
                       local.public_lb_cidrs }"
-  app_access_cidrs = "${var.admin_lb_internal ?
+  app_access_cidrs = "${var.bankrupt_officer_search_web_lb_internal ?
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
 }
@@ -134,7 +134,7 @@ module "ecs-stack" {
   internal_top_level_domain  = var.internal_top_level_domain
   subnet_ids                 = local.lb_subnet_ids
   web_access_cidrs           = local.lb_access_cidrs
-  admin_lb_internal = var.admin_lb_internal
+  bankrupt_officer_search_web_lb_internal = var.bankrupt_officer_search_web_lb_internal
 }
 
 module "ecs-services" {
@@ -176,9 +176,10 @@ module "ecs-services" {
   internal_api_url                   = var.internal_api_url
   api_url                            = var.api_url
 
-  # bankrupt-officer-search-web variables
+  # bankrupt-officer-search-stack variables
   bankrupt_officer_search_web_release_version            = var.bankrupt_officer_search_web_release_version
   bankrupt_officer_search_web_application_port           = "10000"
+  bankrupt_officer_search_api_url                        = var.bankrupt_officer_search_api_url
   bankrupt_officer_search_web_oauth2_redirect_uri        = var.bankrupt_officer_search_web_oauth2_redirect_uri
   bankrupt_officer_search_web_oauth2_token_uri           = var.bankrupt_officer_search_web_oauth2_token_uri
   bankrupt_officer_search_web_cdn_host                   = var.bankrupt_officer_search_web_cdn_host

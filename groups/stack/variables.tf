@@ -125,7 +125,7 @@ variable "vault_password" {
 # Networking
 variable "bankrupt_officer_search_web_lb_internal" {
   type        = bool
-  description = "Whether the Bankrupt Officer Search ALB should be internal or public facing"
+  description = "Whether the Bankrupt Officer Search Web ALB should be internal or public facing"
   default     = true
 }
 
@@ -136,7 +136,7 @@ variable "bankrupt_officer_search_web_lb_internal" {
 # eric
 variable "eric_version" {
   type        = string
-  description = "The version of the eric service/container to run as a reverse proxy in front of bankrupt_officer_search_web service."
+  description = "The version of the eric service/container to run as a reverse proxy in front of Bankrupt Officer Search  service."
 }
 variable "eric_cache_url" {
   type = string
@@ -174,17 +174,21 @@ variable "eric_default_rate_limit_window" {
   default = "5m"
 }
 
-# bankrupt-officer-search-web
+# bankrupt_officer_search_web
 
 variable "bankrupt_officer_search_web_release_version" {
   type        = string
   description = "The release version for the bankrupt-officer-search-web service."
 }
+variable "bankrupt_officer_search_api_url" {
+  type        = string
+  description = "The URL for the Bankrupt Officer Search API service."
+}
 variable "bankrupt_officer_search_web_oauth2_redirect_uri" {
   type = string
   description = "The uri to which to redirect after authorisation i.e. the CHS web url plus callback path \"/oauth2/user/callback\""
 }
-variable "bankrupt_officer_search_web_oauth2_token_uri" {
+variable "bankrupt_officer-search_web_oauth2_token_uri" {
   type = string
   description = "The uri of the oauth token refresh endpoint"
 }
