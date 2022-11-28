@@ -64,7 +64,7 @@ locals {
   )
 }
 
-resource "aws_ecs_task_definition" "bankrupt-officer-search-web-task-definition" {
+resource "aws_ecs_task_definition" "bankrupt-officer-search-web-td" {
   family                = "${var.environment}-${local.service_name}"
   execution_role_arn    = var.task_execution_role_arn
   container_definitions = templatefile(
