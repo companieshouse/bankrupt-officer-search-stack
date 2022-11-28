@@ -6,11 +6,11 @@ locals {
 resource "aws_ecs_service" "bankrupt-officer-search-web-ecs-service" {
   name            = "${var.environment}-${local.service_name}"
   cluster         = var.ecs_cluster_id
-  task_definition = aws_ecs_task_definition.bankrupt-officer-search-web-task-definition.arn
+  task_definition = aws_ecs_task_definition.bankrupt-officer-search-web-td.arn
   desired_count   = 1
   depends_on      = [var.bankrupt-officer-search-web-lb-arn]
   load_balancer {
-    target_group_arn = aws_lb_target_group.bankrupt-officer-search-web-target_group.arn
+    target_group_arn = aws_lb_target_group.bankrupt-officer-search-web-tg.arn
     container_port   = var.bankrupt_officer_search_web_application_port
     container_name   = "eric" # [ALB -> target group -> eric -> bankrupt officer search web] so eric container named here
   }
@@ -72,7 +72,7 @@ resource "aws_ecs_task_definition" "bankrupt-officer-search-web-task-definition"
   )
 }
 
-resource "aws_lb_target_group" "bankrupt-officer-search-web-target_group" {
+resource "aws_lb_target_group" "bankrupt-officer-search-web-tg" {
   name     = "${var.environment}-${local.service_name}"
   port     = var.bankrupt_officer_search_web_application_port
   protocol = "HTTP"
