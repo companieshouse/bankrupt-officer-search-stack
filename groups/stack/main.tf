@@ -86,11 +86,11 @@ locals {
   name_prefix      = "${local.stack_name}-${var.environment}"
 
   public_lb_cidrs  = ["0.0.0.0/0"]
-  lb_subnet_ids    = "${var.bankrupt_officer_search_web_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
-  lb_access_cidrs  = "${var.bankrupt_officer_search_web_lb_internal?
+  lb_subnet_ids    = "${var.bados_web_lb_internal ? local.application_ids : local.public_ids}" # place ALB in correct subnets
+  lb_access_cidrs  = "${var.bados_web_lb_internal?
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
                       local.public_lb_cidrs }"
-  app_access_cidrs = "${var.bankrupt_officer_search_web_lb_internal ?
+  app_access_cidrs = "${var.bados_web_lb_internal ?
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs)) :
                       concat(local.internal_cidrs,local.vpn_cidrs,local.management_private_subnet_cidrs,split(",",local.application_cidrs),split(",",local.public_cidrs)) }"
 }
@@ -134,7 +134,7 @@ module "ecs-stack" {
   internal_top_level_domain  = var.internal_top_level_domain
   subnet_ids                 = local.lb_subnet_ids
   web_access_cidrs           = local.lb_access_cidrs
-  bankrupt_officer_search_web_lb_internal = var.bankrupt_officer_search_web_lb_internal
+  bados_web_lb_internal      = var.bados_web_lb_internal
 }
 
 module "ecs-services" {
@@ -142,8 +142,8 @@ module "ecs-services" {
 
   name_prefix               = local.name_prefix
   environment               = var.environment
-  bankrupt-officer-search-web-lb-arn          = module.ecs-stack.bankrupt-officer-search-web-lb-listener-arn
-  bankrupt-officer-search-web-lb-listener-arn = module.ecs-stack.bankrupt-officer-search-web-lb-listener-arn
+  bados-web-lb-arn          = module.ecs-stack.bados-web-lb-listener-arn
+  bados-web-lb-listener-arn = module.ecs-stack.bados-web-lb-listener-arn
   vpc_id                    = local.vpc_id
   subnet_ids                = local.application_ids
   web_access_cidrs          = local.app_access_cidrs
@@ -177,15 +177,15 @@ module "ecs-services" {
   api_url                            = var.api_url
 
   # bankrupt-officer-search-stack variables
-  bankrupt_officer_search_web_release_version            = var.bankrupt_officer_search_web_release_version
-  bankrupt_officer_search_web_application_port           = "10000"
-  bankrupt_officer_search_web_oauth2_redirect_uri        = var.bankrupt_officer_search_web_oauth2_redirect_uri
-  bankrupt_officer_search_web_oauth2_token_uri           = var.bankrupt_officer_search_web_oauth2_token_uri
-  bankrupt_officer_search_web_cdn_host                   = var.bankrupt_officer_search_web_cdn_host
-  bankrupt_officer_search_web_chs_url                    = var.bankrupt_officer_search_web_chs_url
-  bankrupt_officer_search_web_account_url                = var.bankrupt_officer_search_web_account_url
-  bankrupt_officer_search_web_monitor_url                = var.bankrupt_officer_search_web_monitor_url
-  bankrupt_officer_search_web_cache_pool_size            = var.bankrupt_officer_search_web_cache_pool_size
-  bankrupt_officer_search_web_cache_server               = var.bankrupt_officer_search_web_cache_server
-  bankrupt_officer_search_web_default_session_expiration = var.bankrupt_officer_search_web_default_session_expiration
+  bados_web_release_version            = var.bados_web_release_version
+  bados_web_application_port           = "10000"
+  bados_web_oauth2_redirect_uri        = var.bados_web_oauth2_redirect_uri
+  bados_web_oauth2_token_uri           = var.bados_web_oauth2_token_uri
+  bados_web_cdn_host                   = var.bados_web_cdn_host
+  bados_web_chs_url                    = var.bados_web_chs_url
+  bados_web_account_url                = var.bados_web_account_url
+  bados_web_monitor_url                = var.bados_web_monitor_url
+  bados_web_cache_pool_size            = var.bados_web_cache_pool_size
+  bados_web_cache_server               = var.bados_web_cache_server
+  bados_web_default_session_expiration = var.bados_web_default_session_expiration
 }

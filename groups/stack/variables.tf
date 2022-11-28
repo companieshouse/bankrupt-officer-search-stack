@@ -123,7 +123,7 @@ variable "vault_password" {
 }
 
 # Networking
-variable "bankrupt_officer_search_web_lb_internal" {
+variable "bados_web_lb_internal" {
   type        = bool
   description = "Whether the Bankrupt Officer Search Web ALB should be internal or public facing"
   default     = true
@@ -174,45 +174,45 @@ variable "eric_default_rate_limit_window" {
   default = "5m"
 }
 
-# bankrupt_officer_search_web
+# bados_web
 
-variable "bankrupt_officer_search_web_release_version" {
+variable "bados_web_release_version" {
   type        = string
   description = "The release version for the bankrupt-officer-search-web service."
 }
-variable "bankrupt_officer_search_web_oauth2_redirect_uri" {
+variable "bados_web_oauth2_redirect_uri" {
   type = string
   description = "The uri to which to redirect after authorisation i.e. the CHS web url plus callback path \"/oauth2/user/callback\""
 }
-variable "bankrupt_officer_search_web_oauth2_token_uri" {
+variable "bados_web_oauth2_token_uri" {
   type = string
   description = "The uri of the oauth token refresh endpoint"
 }
-variable "bankrupt_officer_search_web_cdn_host" {
+variable "bados_web_cdn_host" {
   type        = string
   description = "The host URL for the CDN"
 }
-variable "bankrupt_officer_search_web_chs_url" {
+variable "bados_web_chs_url" {
   type        = string
   description = "The URL for CHS"
 }
-variable "bankrupt_officer_search_web_account_url" {
+variable "bados_web_account_url" {
   type        = string
   description = "The URL for CHS Account"
 }
-variable "bankrupt_officer_search_web_monitor_url" {
+variable "bados_web_monitor_url" {
   type        = string
   description = "The URL for CHS Follow"
 }
-variable "bankrupt_officer_search_web_cache_pool_size" {
+variable "bados_web_cache_pool_size" {
   type        = number
   description = "The max size of the pool of connections to the cache"
 }
-variable "bankrupt_officer_search_web_cache_server" {
+variable "bados_web_cache_server" {
   type        = string
   description = "The server name of the cache"
 }
-variable "bankrupt_officer_search_web_default_session_expiration" {
+variable "bados_web_default_session_expiration" {
   type        = number
   description = "Default session expiration in seconds"
 }

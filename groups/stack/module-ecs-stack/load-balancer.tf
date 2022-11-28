@@ -1,12 +1,12 @@
-resource "aws_lb" "bankrupt-officer-search-web-lb" {
+resource "aws_lb" "bados-web-lb" {
   name            = "${var.stack_name}-${var.environment}-lb"
   security_groups = [aws_security_group.internal-service-sg.id]
   subnets         = flatten([split(",", var.subnet_ids)])
-  internal        = var.bankrupt_officer_search_web_lb_internal
+  internal        = var.bados_web_lb_internal
 }
 
-resource "aws_lb_listener" "bankrupt-officer-search-web-lb-listener" {
-  load_balancer_arn = aws_lb.bankrupt-officer-search-web-lb.arn
+resource "aws_lb_listener" "bados-web-lb-listener" {
+  load_balancer_arn = aws_lb.bados-web-lb.arn
   port              = "443"
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-2016-08"
@@ -21,8 +21,8 @@ resource "aws_lb_listener" "bankrupt-officer-search-web-lb-listener" {
   }
 }
 
-resource "aws_lb_listener" "bankrupt-officer-search-web-lb-http-listener" {
-  load_balancer_arn = aws_lb.bankrupt-officer-search-web-lb.arn
+resource "aws_lb_listener" "bados-web-lb-http-listener" {
+  load_balancer_arn = aws_lb.bados-web-lb.arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -37,14 +37,14 @@ resource "aws_lb_listener" "bankrupt-officer-search-web-lb-http-listener" {
   }
 }
 
-resource "aws_route53_record" "bankrupt-officer-search-web-r53-record" {
+resource "aws_route53_record" "bados-web-r53-record" {
   count   = var.zone_id == "" ? 0 : 1 # zone_id defaults to empty string giving count = 0 i.e. not route 53 record
   zone_id = var.zone_id
-  name    = "bankrupt-officer-search-web${var.external_top_level_domain}"
+  name    = "bados-web${var.external_top_level_domain}"
   type    = "A"
   alias {
-    name                   = aws_lb.bankrupt-officer-search-web-lb.dns_name
-    zone_id                = aws_lb.bankrupt-officer-search-web-lb.zone_id
+    name                   = aws_lb.bados-web-lb.dns_name
+    zone_id                = aws_lb.bados-web-lb.zone_id
     evaluate_target_health = false
   }
 }

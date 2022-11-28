@@ -27,7 +27,7 @@ variable "vpc_id" {
   type        = string
   description = "The ID of the VPC for the target group and security group."
 }
-variable "bankrupt_officer_search_web_lb_internal" {
+variable "bados_web_lb_internal" {
   type        = bool
   description = "Whether the bankrupt officer search web ALB should be internal or public facing"
 }
