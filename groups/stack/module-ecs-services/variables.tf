@@ -13,11 +13,11 @@ variable "vpc_id" {
   type        = string
   description = "The ID of the VPC for the target group and security group."
 }
-variable "bankrupt-officer-search-web-lb-arn" {
+variable "bados-web-lb-arn" {
   type        = string
   description = "The ARN of the load balancer created in the ecs-stack module."
 }
-variable "bankrupt-officer-search-web-lb-listener-arn" {
+variable "bados-web-lb-listener-arn" {
   type        = string
   description = "The ARN of the lb listener created in the ecs-stack module."
 }
@@ -127,46 +127,46 @@ variable "eric_default_rate_limit_window" {
 }
 
 # bankrupt-officer-search-web
-variable "bankrupt_officer_search_web_release_version" {
+variable "bados_web_release_version" {
   type        = string
   description = "The release version for the bankrupt-officer-search-web service."
 }
-variable "bankrupt_officer_search_web_application_port" {
+variable "bados_web_application_port" {
   type        = string
   description = "The port number for the bankrupt-officer-search-web service."
 }
-variable "bankrupt_officer_search_web_oauth2_redirect_uri" {
+variable "bados_web_oauth2_redirect_uri" {
   type = string
 }
-variable "bankrupt_officer_search_web_oauth2_token_uri" {
+variable "bados_web_oauth2_token_uri" {
   type = string
   description = "The uri of the oauth token refresh endpoint"
 }
-variable "bankrupt_officer_search_web_cdn_host" {
+variable "bados_web_cdn_host" {
   type        = string
   description = "The host URL for the CDN"
 }
-variable "bankrupt_officer_search_web_chs_url" {
+variable "bados_web_chs_url" {
   type        = string
   description = "The URL for CHS"
 }
-variable "bankrupt_officer_search_web_account_url" {
+variable "bados_web_account_url" {
   type        = string
   description = "The URL for CHS Account"
 }
-variable "bankrupt_officer_search_web_monitor_url" {
+variable "bados_web_monitor_url" {
   type        = string
   description = "The URL for CHS Follow"
 }
-variable "bankrupt_officer_search_web_cache_pool_size" {
+variable "bados_web_cache_pool_size" {
   type        = number
   description = "The max size of the pool of connections to the cache"
 }
-variable "bankrupt_officer_search_web_cache_server" {
+variable "bados_web_cache_server" {
   type        = string
   description = "The server name of the cache"
 }
-variable "bankrupt_officer_search_web_default_session_expiration" {
+variable "bados_web_default_session_expiration" {
   type        = number
   description = "Default session expiration in seconds"
 }

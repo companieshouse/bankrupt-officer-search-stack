@@ -29,12 +29,12 @@ api_url = "https://api.company-information.service.gov.uk"
 account_subdomain_prefix = "identity"
 
 # shared bankrupt officer search web configs
-bankrupt_officer_search_web_oauth2_redirect_uri = "https://find-and-update.company-information.service.gov.uk/oauth2/user/callback"
-bankrupt_officer_search_web_oauth2_token_uri = "https://identity.company-information.service.gov.uk/oauth2/token"
-bankrupt_officer_search_web_cdn_host = "d30x4yr4zvd64e.cloudfront.net"
-bankrupt_officer_search_web_chs_url = "https://find-and-update.company-information.service.gov.uk"
-bankrupt_officer_search_web_account_url = "https://identity.company-information.service.gov.uk"
-bankrupt_officer_search_web_monitor_url = "https://follow.company-information.service.gov.uk"
-bankrupt_officer_search_web_cache_pool_size = 8
-bankrupt_officer_search_web_cache_server = "live-chs-elasticache.yaky4x.ng.0001.euw2.cache.amazonaws.com:6379"
-bankrupt_officer_search_web_default_session_expiration = 3600
+bados_web_oauth2_redirect_uri = "https://find-and-update.company-information.service.gov.uk/oauth2/user/callback"
+bados_web_oauth2_token_uri = "https://identity.company-information.service.gov.uk/oauth2/token"
+bados_web_cdn_host = "d30x4yr4zvd64e.cloudfront.net"
+bados_web_chs_url = "https://find-and-update.company-information.service.gov.uk"
+bados_web_account_url = "https://identity.company-information.service.gov.uk"
+bados_web_monitor_url = "https://follow.company-information.service.gov.uk"
+bados_web_cache_pool_size = 8
+bados_web_cache_server = "live-chs-elasticache.yaky4x.ng.0001.euw2.cache.amazonaws.com:6379"
+bados_web_default_session_expiration = 3600
