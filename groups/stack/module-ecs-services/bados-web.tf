@@ -49,7 +49,7 @@ locals {
 
       # bados web specific configs
       bados_web_release_version            : var.bados_web_release_version
-      bados_proxy_port                     : local.bados_web_proxy_port
+      bados_web_proxy_port                 : local.bados_web_proxy_port
       bados_web_oauth2_redirect_uri        : var.bados_web_oauth2_redirect_uri
       bados_web_oauth2_token_uri           : var.bados_web_oauth2_token_uri
       bados_web_cdn_host                   : var.bados_web_cdn_host
