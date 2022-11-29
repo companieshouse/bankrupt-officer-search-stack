@@ -84,7 +84,7 @@ resource "aws_lb_listener_rule" "bados-web" {
   priority     = 1
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.bados-web-target_group.arn
+    target_group_arn = aws_lb_target_group.bados-web-tg.arn
   }
   condition {
     field  = "path-pattern"
