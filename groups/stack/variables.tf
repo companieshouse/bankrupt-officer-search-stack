@@ -133,47 +133,6 @@ variable "bados_web_lb_internal" {
 # Services
 # ------------------------------------------------------------------------------
 
-# eric
-variable "eric_version" {
-  type        = string
-  description = "The version of the eric service/container to run as a reverse proxy in front of Bankrupt Officer Search  service."
-}
-variable "eric_cache_url" {
-  type = string
-}
-variable "eric_cache_max_connections" {
-  type = string
-  default = "10"
-}
-variable "eric_cache_max_idle" {
-  type = string
-  default = "3"
-}
-variable "eric_cache_idle_timeout" {
-  type = string
-  default = "240"
-}
-variable "eric_cache_ttl" {
-  type = string
-  default = "600"
-}
-variable "eric_flush_interval" {
-  type = string
-  default = "10"
-}
-variable "eric_graceful_shutdown_period" {
-  type = string
-  default = "2"
-}
-variable "eric_default_rate_limit" {
-  type = string
-  default = "600"
-}
-variable "eric_default_rate_limit_window" {
-  type = string
-  default = "5m"
-}
-
 # bados_web
 
 variable "bados_web_release_version" {
