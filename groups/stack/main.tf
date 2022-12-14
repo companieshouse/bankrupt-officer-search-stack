@@ -160,18 +160,6 @@ module "ecs-services" {
   cookie_domain             = var.cookie_domain
   cookie_name               = var.cookie_name
 
-  # eric specific configs
-  eric_version                   = var.eric_version
-  eric_cache_url                 = var.eric_cache_url
-  eric_cache_max_connections     = var.eric_cache_max_connections
-  eric_cache_max_idle            = var.eric_cache_max_idle
-  eric_cache_idle_timeout        = var.eric_cache_idle_timeout
-  eric_cache_ttl                 = var.eric_cache_ttl
-  eric_flush_interval            = var.eric_flush_interval
-  eric_graceful_shutdown_period  = var.eric_graceful_shutdown_period
-  eric_default_rate_limit        = var.eric_default_rate_limit
-  eric_default_rate_limit_window = var.eric_default_rate_limit_window
-
   # api configs
   internal_api_url                   = var.internal_api_url
   api_url                            = var.api_url
